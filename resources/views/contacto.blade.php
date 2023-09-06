@@ -7,9 +7,22 @@
 </head>
 <body>
     <h1>Formulario de contactos</h1>
-    <form action="" method="POST">
+    <form action="contacto" method="POST">
+        
+        <h3>{{ $tipo }}</h3>
+        
+        @csrf
         <label for="correo">correo:</label> <br>
-        <input type="email" name="correo"> <br>
+        <input 
+            type="email" 
+            name="correo"
+            @if($tipo == 'alumno')
+                value = "@alumnos.udg.mx"
+            @else
+                value = "@gmail.com"
+            @endif
+            >
+            <br>
         <label for="comentario">comentario:</label> <br>
         <textarea name="comentario" id="comentario" cols="30" rows="10"></textarea>
             <br>
