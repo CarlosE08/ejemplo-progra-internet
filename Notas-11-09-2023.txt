@@ -1,0 +1,57 @@
+insertar un modelo:
+
+php artisan make:model --help
+php artisan make:model Contacto 
+
+ctrl + p buscar el modelo 
+
+Representante de alto nivel de la tabla:
+$contacto = new Contacto();
+
+Es autoincremental
+
+return redirect('/contacto'); que la
+
+eloquent>getting started
+
+En caso de que el modelo no tenga el mismo nombre de la tabla, se debe añadir un  protected $table = 'nombre-de-la-tabla';
+
+available validation rules
+
+Verificar errores:
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+php artisan migrate:rollback
+
+Crear un controlador
+
+php artisan make:controller NombreDeControlador
+
+Nombrar siempre las clases con mayúsculas
+
+buscar las mayúsculas de las clases con ctrl p es más fácil en VSCode
+
+Arquitectura rest: ¿?
+
+Crear através del modelo 
+
+php artisan make:model tarea -mc migración, controlador 
+php artisan make:model tarea -mcr igual pero de tipo resourse
+
+listado de todas las rutas
+php artisan route:list 
+
+
+Traer una tabla para hacer un crud sencillo
+
+Route::resource('tarea', TareaController::class);
+
