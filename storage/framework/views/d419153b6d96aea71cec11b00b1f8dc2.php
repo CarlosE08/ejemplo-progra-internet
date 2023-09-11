@@ -10,18 +10,18 @@
 
     <form action="contacto" method="POST">
         
-        <h3>{{ $tipo }}</h3>
+        <h3><?php echo e($tipo); ?></h3>
         
-        @csrf
+        <?php echo csrf_field(); ?>
         <label for="correo">correo:</label> <br>
         <input 
             type="email" 
             name="correo"
-            @if($tipo == 'alumno')
+            <?php if($tipo == 'alumno'): ?>
                 value = "@alumnos.udg.mx"
-            @else
+            <?php else: ?>
                 value = "@gmail.com"
-            @endif
+            <?php endif; ?>
             >
             <br>
         <label for="comentario">comentario:</label> <br>
@@ -35,15 +35,15 @@
         <input type="submit" value="Enviar">
     </form>
 
-    @if($errors->any())
+    <?php if($errors->any()): ?>
         <div class="alert alert-danger">
             <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
+                <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li><?php echo e($error); ?></li>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </ul>
         </div>
-    @endif
+    <?php endif; ?>
 
 </body>
-</html>
+</html><?php /**PATH C:\laragon\www\ejemplo-progra-internet\resources\views/contacto.blade.php ENDPATH**/ ?>

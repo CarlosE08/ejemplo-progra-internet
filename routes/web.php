@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\SitioController;
+use App\model\Contacto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,11 +20,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/contacto/{tipo?}', function ($tipo = 'Otro') {
-    //dd($tipo);
-    return view('contacto', compact('tipo'));
-});
+Route::get('/contacto/{tipo?}', [SitioController::class, 'contactoForm']);
 
-Route::post('/contacto', function (Request $request) { #Esta 
-    dd($request->correo);
-});
+Route::post('/contacto/{tipo?}', [SitioController::class, 'contactoSave']);
+
